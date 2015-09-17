@@ -13,4 +13,5 @@ describe 'displaying current amount to screen' do
     xit 'rejects invalid coin types' do
       expect(insert_coins()).to eq ""
     end
+  end
 end
