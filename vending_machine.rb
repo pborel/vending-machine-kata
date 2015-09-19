@@ -1,9 +1,4 @@
-# require_relative 'coins_hash'
-COINS = {
-  "5.67"  =>  25,
-  "2.5"   =>  10,
-  "5"     =>  5
-}
+require_relative 'coins_hash'
 
 # Just in case there is more than 1 vending machine in the world, I made it a class
 class VendingMachine
