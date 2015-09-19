@@ -21,7 +21,7 @@ describe 'playing current amount to screen' do
     end
 
     it 'rejects invalid coin types and does not update amount' do
-      invalid_coins_array = [2.5, 5, 6]
+      invalid_coins_array = [2.5, 5.0, 6.0]
       expect(vending_machine.take_coins(invalid_coins_array)).to eq "This coin is invalid: #{coin}"
     end
   end

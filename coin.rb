@@ -6,7 +6,7 @@ class Coin
   end
 
   def is_valid_coin?
-    return true if @weight == 5.67 || 2.5 || 5
+    return true if COINS.has_key?(@weight)
     return false
   end
 end
