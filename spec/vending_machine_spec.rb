@@ -31,7 +31,9 @@ describe 'playing vending machine' do
   vending_machine2 = VendingMachine.new
   describe 'selects product' do
     it 'displays PRICE: <price of item> if amount is not high enough' do
-      expect(vending_machine2.select_product("cola")).to eq "PRICE: #{price}"
+      product_name = "cola"
+      price = PRODUCTS[product_name]
+      expect(vending_machine2.select_product(product_name)).to eq "PRICE: #{price}"
     end
 
     xit 'returns product and displays THANK YOU if product is purchased' do
