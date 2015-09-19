@@ -54,6 +54,16 @@ describe 'playing vending machine' do
   describe 'returns coins' do
     it 'displays INSERT COINS and returns all coins in vending machine' do
       vending_machine3.take_coins([5.67, 2.5, 5.0])
-      expect(vending_machine2.return_coins).to eq "INSERT COINS"
+      expect(vending_machine3.return_coins).to eq "INSERT COINS"
     end
+  end
+
+  # SOLD OUT
+  vending_machine4 = VendingMachine.new
+  describe 'is sold out' do
+    it 'displays SOLD OUT when an item is sold out' do
+      product_name = "chips"
+      expect(vending_machine4.select_product(product_name)).to eq "SOLD OUT"
+    end
+  end
 end

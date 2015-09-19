@@ -49,4 +49,13 @@ class VendingMachine
     @amount -= price
     return "THANK YOU: #{product_name}"
   end
+
+  def return_coins
+    returned_coins = []
+    @coins.length.times do
+      returned_coins << @coins.pop
+    end
+
+    return returned_coins && "INSERT COINS"
+  end
 end
