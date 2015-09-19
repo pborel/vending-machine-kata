@@ -36,8 +36,10 @@ describe 'playing vending machine' do
       expect(vending_machine2.select_product(product_name)).to eq "PRICE: #{price}"
     end
 
-    xit 'returns product and displays THANK YOU if product is purchased' do
-      expect(vending_machine2.select_product("candy")).to eq "THANK YOU"
+    it 'returns product and displays THANK YOU if product is purchased' do
+      product_name = "candy"
+      vending_machine2.take_coins([5.67, 5.67, 2.5, 5.0])
+      expect(vending_machine2.select_product(product_name)).to eq "THANK YOU: #{product_name}"
     end
 
     xit 'displays INSERT COINS (amount is 0) after a product is purchased' do

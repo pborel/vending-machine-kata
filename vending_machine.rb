@@ -43,5 +43,6 @@ class VendingMachine
   def select_product(product_name)
     price = PRODUCTS[product_name]
     return "PRICE: #{price}" if @amount < price
+    return "THANK YOU: #{product_name}"
   end
 end
