@@ -1,6 +1,5 @@
 require_relative '../vending_machine'
 
-  # invalid_coins_array = [2.5, 5, 6]
 
 describe 'playing current amount to screen' do
   vending_machine = VendingMachine.new
@@ -22,7 +21,8 @@ describe 'playing current amount to screen' do
     end
 
     xit 'rejects invalid coin types and does not update amount' do
-      expect(take_coins()).to eq ""
+      invalid_coins_array = [2.5, 5, 6]
+      expect(ending_machine.take_coins(invalid_coins_array)).to eq "This coin is invalid: #{coin}"
     end
   end
 end

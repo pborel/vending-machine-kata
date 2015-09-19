@@ -29,7 +29,7 @@ class VendingMachine
 
   # Returns the coin object
   def return_coin(coin)
-    p "This coin is invalid: #{coin}"
+    return "This coin is invalid: #{coin}"
   end
 
   # prints the total value of all coins in the vending machine
