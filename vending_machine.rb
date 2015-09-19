@@ -23,7 +23,7 @@ class VendingMachine
   def calculate_coins_value
     @amount = 0
     @coins.each do |coin|
-      @amount += COINS.key(coin.weight)
+      @amount += COINS[coin.weight]
     end
   end
 
@@ -38,5 +38,4 @@ class VendingMachine
     return "INSERT COINS" if @amount == 0
     return @amount
   end
-
 end

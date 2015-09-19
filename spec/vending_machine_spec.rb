@@ -11,12 +11,12 @@ describe 'playing current amount to screen' do
     end
 
     it 'accepts valid coin types and updates amount' do
-      valid_coins_array = [5.67, 2.5, 5]
-      expect(vending_machine.take_coins(valid_coins_array)).to not_eq "INSERT COINS"
+      valid_coins_array = [5.67, 2.5, 5.0]
+      expect(vending_machine.take_coins(valid_coins_array)).not_to eq "INSERT COINS"
     end
 
     xit 'displays correct amount when coins are inserted' do
-      valid_coins_array = [5.67, 2.5, 5]
+      valid_coins_array = [5.67, 2.5, 5.0]
       expect(vending_machine.take_coins(valid_coins_array)).to eq "40"
     end
 
