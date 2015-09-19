@@ -35,7 +35,7 @@ class VendingMachine
   def print_coins_value
     calculate_coins_value
     return "INSERT COINS" if @amount == 0
-    p @amount
+    return @amount
   end
 
 end

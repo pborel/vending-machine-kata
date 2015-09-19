@@ -1,6 +1,5 @@
 require_relative '../vending_machine'
 
-  # valid_coins_array = [5.67, 2.5, 5]
   # invalid_coins_array = [2.5, 5, 6]
 
 describe 'playing current amount to screen' do
@@ -12,12 +11,14 @@ describe 'playing current amount to screen' do
       expect(vending_machine.take_coins(empty_coins_array)).to eq "INSERT COINS"
     end
 
-    xit 'accepts valid coin types and updates amount' do
-      expect(take_coins()).to eq ""
+    it 'accepts valid coin types and updates amount' do
+      valid_coins_array = [5.67, 2.5, 5]
+      expect(vending_machine.take_coins(valid_coins_array)).to not_eq "INSERT COINS"
     end
 
     xit 'displays correct amount when coins are inserted' do
-      expect(take_coins()).to eq ""
+      valid_coins_array = [5.67, 2.5, 5]
+      expect(vending_machine.take_coins(valid_coins_array)).to eq "40"
     end
 
     xit 'rejects invalid coin types and does not update amount' do
