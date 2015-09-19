@@ -33,17 +33,19 @@ describe 'playing vending machine' do
     it 'displays PRICE: <price of item> if amount is not high enough' do
       product_name = "cola"
       price = PRODUCTS[product_name]
+      vending_machine2.take_coins([5.67])
       expect(vending_machine2.select_product(product_name)).to eq "PRICE: #{price}"
     end
 
     it 'returns product and displays THANK YOU if product is purchased' do
       product_name = "candy"
-      vending_machine2.take_coins([5.67, 5.67, 2.5, 5.0])
+      vending_machine2.take_coins([5.67, 2.5, 5.0])
       expect(vending_machine2.select_product(product_name)).to eq "THANK YOU: #{product_name}"
     end
 
-    xit 'displays INSERT COINS (amount is 0) after a product is purchased' do
-      expect(vending_machine2.select_product("chips")).to eq "INSERT COINS"
+    it 'displays INSERT COINS if amount is 0 when user selects a product' do
+      product_name = "candy"
+      expect(vending_machine2.select_product(product_name)).to eq "INSERT COINS"
     end
   end
 end
