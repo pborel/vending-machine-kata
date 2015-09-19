@@ -1,4 +1,5 @@
 require_relative 'coins_hash'
+require_relative 'coin'
 
 # Just in case there is more than 1 vending machine in the world, I made it a class
 class VendingMachine
