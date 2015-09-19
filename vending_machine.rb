@@ -18,9 +18,9 @@ class VendingMachine
     coins_array.each do |coin_weight|
       coin = Coin.new( {weight: coin_weight} )
       coin.is_valid_coin? ? @coins << coin : return_coin(coin)
-
-      print_coins_value
     end
+
+    print_coins_value
   end
 
   # calcuates the total value of all coins in the vending machine
@@ -39,7 +39,7 @@ class VendingMachine
   # prints the total value of all coins in the vending machine
   def print_coins_value
     calculate_coins_value
-    p "INSERT COINS" if @amount == 0
+    return "INSERT COINS" if @amount == 0
     p @amount
   end
 

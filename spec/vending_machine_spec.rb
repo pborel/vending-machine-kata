@@ -9,7 +9,7 @@ describe 'playing current amount to screen' do
   describe 'amounts from coins' do
     it 'displays INSERT COINS if amount is 0' do
       empty_coins_array = []
-      expect(take_coins(empty_coins_array)).to eq "INSERT COINS"
+      expect(vending_machine.take_coins(empty_coins_array)).to eq "INSERT COINS"
     end
 
     xit 'accepts valid coin types and updates amount' do
