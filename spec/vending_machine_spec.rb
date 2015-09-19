@@ -48,4 +48,12 @@ describe 'playing vending machine' do
       expect(vending_machine2.select_product(product_name)).to eq "INSERT COINS"
     end
   end
+
+  # RETURN COINS
+  vending_machine3 = VendingMachine.new
+  describe 'returns coins' do
+    it 'displays INSERT COINS and returns all coins in vending machine' do
+      vending_machine3.take_coins([5.67, 2.5, 5.0])
+      expect(vending_machine2.return_coins).to eq "INSERT COINS"
+    end
 end
