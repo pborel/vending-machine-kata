@@ -15,14 +15,14 @@ describe 'playing current amount to screen' do
       expect(vending_machine.take_coins(valid_coins_array)).not_to eq "INSERT COINS"
     end
 
-    xit 'displays correct amount when coins are inserted' do
+    it 'displays correct amount when coins are inserted' do
       valid_coins_array = [5.67, 2.5, 5.0]
-      expect(vending_machine.take_coins(valid_coins_array)).to eq "40"
+      expect(vending_machine.take_coins(valid_coins_array)).to eq 80
     end
 
-    xit 'rejects invalid coin types and does not update amount' do
+    it 'rejects invalid coin types and does not update amount' do
       invalid_coins_array = [2.5, 5, 6]
-      expect(ending_machine.take_coins(invalid_coins_array)).to eq "This coin is invalid: #{coin}"
+      expect(vending_machine.take_coins(invalid_coins_array)).to eq "This coin is invalid: #{coin}"
     end
   end
 end
