@@ -15,9 +15,11 @@ class VendingMachine
   # coins_array should be an array of the weight (oz) of each coin
   # usually a database would be used to do this
   def take_coins(coins_array)
-    coins_array.each |coin_weight| do
+    coins_array.each do |coin_weight|
       coin = Coin.new( {weight: coin_weight} )
       coin.is_valid_coin? ? @coins << coin : return_coin(coin)
+
+      print_coins_value
     end
   end
 
@@ -41,8 +43,4 @@ class VendingMachine
     p @amount
   end
 
-  def run(coins_array)
-    take_coins(coins_array)
-    print_coins_value
-  end
 end
