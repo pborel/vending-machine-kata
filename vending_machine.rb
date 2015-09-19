@@ -12,9 +12,7 @@ class VendingMachine
   # usually a database would be used to do this
   def take_coins(coins_array)
     coins_array.each do |coin_weight|
-      p "*" * 10
       coin = Coin.new( {weight: coin_weight} )
-      p "*" * 10
       coin.is_valid_coin? ? @coins << coin : return_coin(coin)
     end
 
