@@ -42,7 +42,11 @@ class VendingMachine
 
   def select_product(product_name)
     price = PRODUCTS[product_name]
+
+    return "INSERT COINS" if @amount == 0
     return "PRICE: #{price}" if @amount < price
+
+    @amount -= price
     return "THANK YOU: #{product_name}"
   end
 end
