@@ -1,9 +1,10 @@
 require_relative '../vending_machine'
 
 
-describe 'playing current amount to screen' do
+describe 'playing vending machine' do
   vending_machine = VendingMachine.new
 
+  # ACCEPT COINS
   describe 'amounts from coins' do
     it 'displays INSERT COINS if amount is 0' do
       empty_coins_array = []
@@ -23,6 +24,21 @@ describe 'playing current amount to screen' do
     it 'rejects invalid coin types and does not update amount' do
       invalid_coins_array = [2.5, 5.0, 6.0]
       expect(vending_machine.take_coins(invalid_coins_array)).to eq 95
+    end
+  end
+
+  # SELECT PRODUCT
+  describe 'selects product' do
+    it 'displays PRICE: <price of item> if amount is not high enough' do
+      expect(vending_machine.select_product("cola")).to eq "PRICE: #{price}"
+    end
+
+    xit 'returns product and displays THANK YOU if product is purchased' do
+      expect(vending_machine.select_product("candy")).to eq "THANK YOU"
+    end
+
+    xit 'displays INSERT COINS (amount is 0) after a product is purchased' do
+      expect(vending_machine.select_product("chips")).to eq "INSERT COINS"
     end
   end
 end
