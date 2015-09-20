@@ -36,18 +36,18 @@ class VendingMachine
   # prints the total value of all coins in the vending machine
   def print_coins_value
     calculate_coins_value
-    return "INSERT COINS" if @amount == 0
-    return @amount
+    display
   end
 
   def select_product(product_name)
     price = PRODUCTS[product_name]
 
-    return "INSERT COINS" if @amount == 0
-    return "PRICE: #{price}" if @amount < price
-
-    @amount -= price
-    return "THANK YOU: #{product_name}"
+    if @amount >= price
+      @amount -= price
+      "THANK YOU: #{product_name}"
+    else
+      display(price)
+    end
   end
 
   def return_coins
@@ -56,6 +56,18 @@ class VendingMachine
       returned_coins << @coins.pop
     end
 
-    return returned_coins && "INSERT COINS"
+    calculate_coins_value
+
+    return returned_coins && display
+  end
+
+  def display(price=0)
+    if @amount == 0
+      return "INSERT COINS"
+    elsif @amount < price
+      "PRICE: #{price}"
+    else
+      @amount
+    end
   end
 end
