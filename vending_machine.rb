@@ -17,12 +17,13 @@ class VendingMachine
       coin.is_valid_coin? ? @coins << coin : return_coin(coin)
     end
 
-    print_coins_value
+    display
   end
 
   # calcuates the total value of all coins in the vending machine
   def calculate_coins_value
     @amount = 0
+
     @coins.each do |coin|
       @amount += COINS[coin.weight]
     end
@@ -33,29 +34,42 @@ class VendingMachine
     return "This coin is invalid: #{coin.weight}"
   end
 
-  # prints the total value of all coins in the vending machine
-  def print_coins_value
-    calculate_coins_value
-    return "INSERT COINS" if @amount == 0
-    return @amount
-  end
-
   def select_product(product_name)
-    price = PRODUCTS[product_name]
+    price = PRODUCTS[product_name]["price"]
 
-    return "INSERT COINS" if @amount == 0
-    return "PRICE: #{price}" if @amount < price
-
-    @amount -= price
-    return "THANK YOU: #{product_name}"
+    if @amount >= price
+      @amount -= price
+      "THANK YOU: #{product_name}"
+    else
+      display(price)
+    end
   end
 
   def return_coins
     returned_coins = []
+
     @coins.length.times do
       returned_coins << @coins.pop
     end
 
-    return returned_coins && "INSERT COINS"
+    return returned_coins && display
+  end
+
+  # prints the total value of all coins in the vending machine
+  def display(price=0)
+    calculate_coins_value
+
+    if @amount == 0
+      return "INSERT COINS"
+    elsif @amount < price
+      "PRICE: #{price}"
+    else
+      @amount
+    end
+  end
+
+  def empty_coins
+    @coins = []
+    @amount = 0
   end
 end
