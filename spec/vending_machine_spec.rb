@@ -70,4 +70,13 @@ describe 'playing vending machine' do
       expect(vending_machine.select_product(product_name)).to eq "SOLD OUT"
     end
   end
+
+  # EXACT CHANGE ONLY
+  describe 'needs exact change' do
+    it 'displays EXACT CHANGE ONLY when no extra change in machine' do
+      vending_machine.empty_coins
+      product_name = "candy"
+      expect(vending_machine.select_product(product_name)).to eq "EXACT CHANGE ONLY"
+    end
+  end
 end
