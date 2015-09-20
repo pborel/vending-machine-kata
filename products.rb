@@ -1,4 +1,5 @@
 # Using integers for simplicity, will switch to floats later when refactoring
+# This would usually be a database, using hashes (much like JSON) for simplicity
 PRODUCTS = {
   "cola"  =>  {
     "price" => 100,

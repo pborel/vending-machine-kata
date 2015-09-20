@@ -48,7 +48,7 @@ describe 'playing vending machine' do
 
     it 'displays INSERT COINS if amount is 0 when user selects a product' do
       vending_machine.empty_coins
-      product_name = "candy"
+      product_name = "chips"
       expect(vending_machine.select_product(product_name)).to eq "INSERT COINS"
     end
   end
@@ -66,7 +66,7 @@ describe 'playing vending machine' do
   describe 'is sold out' do
     it 'displays SOLD OUT when an item is sold out' do
       vending_machine.empty_coins
-      product_name = "chips"
+      product_name = "candy"
       expect(vending_machine.select_product(product_name)).to eq "SOLD OUT"
     end
   end
