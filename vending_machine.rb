@@ -5,6 +5,7 @@ require_relative 'coin'
 # Just in case there is more than 1 vending machine in the world, I made it a class
 class VendingMachine
   def initialize
+    @stored_coins = []
     @coins = []
     @amount = 0
   end
@@ -39,6 +40,7 @@ class VendingMachine
 
     if @amount >= price
       @amount -= price
+      store_coins
       "THANK YOU: #{product_name}"
     else
       display(price, product_name)
@@ -62,6 +64,8 @@ class VendingMachine
 
     if stock < 1
       "SOLD OUT"
+    elsif @stored_coins.empty?
+      "EXACT CHANGE ONLY"
     elsif @amount == 0
       "INSERT COINS"
     elsif @amount < price
@@ -71,8 +75,22 @@ class VendingMachine
     end
   end
 
+  def store_coins
+    @coins.length.times do
+      @stored_coins << @coins.pop
+    end
+  end
+
+  # Assuming the owner of the vending machine wants to eventually get his/her coins out, I made a method to empty the stored coins
   def empty_coins
-    @coins = []
-    @amount = 0
+    emptied_coins = []
+
+    @stored_coins.length.times do
+      emptied_coins << @stored_coins.pop
+    end
+
+    emptied_coins
+    # this also emptys the array but does not return the coins
+    # @store_coins.clear
   end
 end
