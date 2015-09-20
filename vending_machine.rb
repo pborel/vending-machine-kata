@@ -41,7 +41,7 @@ class VendingMachine
       @amount -= price
       "THANK YOU: #{product_name}"
     else
-      display(price)
+      display(price, product_name)
     end
   end
 
@@ -56,11 +56,14 @@ class VendingMachine
   end
 
   # prints the total value of all coins in the vending machine
-  def display(price=0)
+  def display(price=0, product_name=false)
     calculate_coins_value
+    stock = product_name ? PRODUCTS[product_name]["stock"] : 1
 
-    if @amount == 0
-      return "INSERT COINS"
+    if stock < 1
+      "SOLD OUT"
+    elsif @amount == 0
+      "INSERT COINS"
     elsif @amount < price
       "PRICE: #{price}"
     else
