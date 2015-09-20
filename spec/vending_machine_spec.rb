@@ -34,7 +34,7 @@ describe 'playing vending machine' do
     it 'displays PRICE: <price of item> if amount is not high enough' do
       vending_machine.empty_coins
       product_name = "cola"
-      price = PRODUCTS[product_name]
+      price = PRODUCTS[product_name]["price"]
       vending_machine.take_coins([5.67])
       expect(vending_machine.select_product(product_name)).to eq "PRICE: #{price}"
     end

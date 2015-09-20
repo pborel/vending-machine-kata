@@ -23,6 +23,7 @@ class VendingMachine
   # calcuates the total value of all coins in the vending machine
   def calculate_coins_value
     @amount = 0
+
     @coins.each do |coin|
       @amount += COINS[coin.weight]
     end
@@ -34,7 +35,7 @@ class VendingMachine
   end
 
   def select_product(product_name)
-    price = PRODUCTS[product_name]
+    price = PRODUCTS[product_name]["price"]
 
     if @amount >= price
       @amount -= price
@@ -46,9 +47,11 @@ class VendingMachine
 
   def return_coins
     returned_coins = []
+
     @coins.length.times do
       returned_coins << @coins.pop
     end
+
     return returned_coins && display
   end
 
